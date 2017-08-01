@@ -1,0 +1,51 @@
+
+#############################################
+# Global option                             #
+#############################################
+Ncores: 5 
+
+#############################################
+# Path configuration                        #
+#############################################
+
+# if True, global environment variables are used in pipeline, if available.
+
+Use_global:   True
+
+# global variables with which paths are set (only used if Use_global is True)
+environmental:
+    PATH_FASTQ: 'PATH_FASTQ'
+    REFLIB: 'STAR_FUSION_REFLIB'
+    PATH_FUSION: 'PATH_FUSION_OUTPUT'
+    PATH_BAM: 'PATH_ALIGNED_BAM'
+    INDEX:  'STAR_INDEX'
+
+path:
+    fastq:  'fastq'
+    qc: 'qc'
+    log:    'logs'
+    fusion: 'fusions'
+    bam: 'bams'
+
+
+#############################################
+# Rule configuration                        #
+#############################################
+
+
+fastqc:
+      extra: ''
+
+cutadapt:
+      extra: >-
+          -a AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+          --minimum-length 30
+
+
+# genome resource lib should be prepared.
+
+star_fusion:
+    reflib:
+        '/home/NFS/users/yo.kim/Resource/Hg19_CTAT_resource_lib'
+    index:
+        '/home/NFS/users/yo.kim/Resource/Hg19_CTAT_resource_lib'
